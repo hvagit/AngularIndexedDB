@@ -3,7 +3,8 @@ var dbControllers = angular.module('dbControllers', []);
 
 dbControllers.controller('myControllerName', function($scope, $indexedDB) {
 
-var req = indexedDB.deleteDatabase('todoData');
+
+var req = indexedDB.deleteDatabase('myIndexedDB4');
 req.onsuccess = function () {
     console.log("Deleted database successfully");
 };
@@ -28,7 +29,8 @@ req.onblocked = function () {
 
         $scope.opretBog = function() {
             $indexedDB.openStore('bog', function(store) {
-              store.insert({"id": $scope.idBogInp,"dk5": $scope.dk5Inp, "forfatter": $scope.forfatterInp, "titel": $scope.titelInp, "isbn": $scope.isbnInp}).then(function(e){});
+    /*          store.insert({"id": $scope.idBogInp,"dk5": $scope.dk5Inp, "forfatter": $scope.forfatterInp, "titel": $scope.titelInp, "isbn": $scope.isbnInp}).then(function(e){}); */
+              store.insert({"dk5": $scope.dk5Inp, "forfatter": $scope.forfatterInp, "titel": $scope.titelInp, "isbn": $scope.isbnInp}).then(function(e){}); 
             });
             $scope.hentAlleBoeger();
         };

@@ -4,7 +4,7 @@ dbApp.config(function ($indexedDBProvider) {
     $indexedDBProvider
       .connection('myIndexedDB4')
       .upgradeDatabase(1, function(event, db, tx){
-        var objStore = db.createObjectStore('bog', {keyPath: 'id'});
+        var objStore = db.createObjectStore('bog', {keyPath: 'id', autoIncrement:true });
         objStore.createIndex('dk5_idx', 'dk5', {unique: false});
         objStore.createIndex('forfatter_idx', 'forfatter', {unique: false});
         objStore.createIndex('titel_idx', 'titel', {unique: false});
@@ -15,5 +15,8 @@ dbApp.config(function ($indexedDBProvider) {
         objStore2.createIndex('udgivet_idx', 'udgivet', {unique: false});
       });
 });
+
+/* Auto-generering  af key vha. nedenstående */
+var autogen = thisDb.createObjectStore("note", { keyPath: "id", autoIncrement:true });  
 
 
